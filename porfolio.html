@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MMM. Mufareez - Professional Portfolio</title>
+  <meta name="description" content="Portfolio of MMM. Mufareez showcasing skills, projects, experience, and contact information." />
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <!-- Material Icons for contact icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Root and base styling */
+    :root {
+      --color-text-primary: #1f2937;
+      --color-text-secondary: #4b5563;
+      --color-bg: #f9fafb;
+      --color-primary: #2563eb;
+      --border-radius: 0.75rem;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --shadow-primary: rgba(37, 99, 235, 0.4);
+      --shadow-primary-dark: rgba(29, 78, 216, 0.6);
+      --icon-size: 2.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      margin: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100%;
+      position: relative;
+      overflow-x: hidden;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1e40af;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--color-text-primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    /* Container max width */
+    .container {
+      max-width: 1200px;
+      z-index: 2;
+      position: relative;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    /* Sticky header nav styling */
+    header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      box-shadow: 0 2px 8px var(--shadow-light);
+      z-index: 1050;
+    }
+    .navbar {
+      padding: 1rem 0;
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: var(--color-primary);
+      user-select: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-link {
+      font-weight: 600;
+      color: var(--color-text-primary);
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+    /* Hero Section */
+    .hero {
+      padding: 6rem 1.5rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      user-select: none;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary-custom {
+      background-color: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow-primary);
+    }
+    .btn-primary-custom:hover,
+    .btn-primary-custom:focus {
+      background-color: #1e40af;
+      outline: none;
+      box-shadow: 0 6px 26px var(--shadow-primary-dark);
+    }
+    /* Section spacing */
+    section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      position: relative;
+      z-index: 2;
+    }
+    /* Section titles */
+    .section-title {
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--color-text-primary);
+      text-align: center;
+      user-select: none;
+    }
+    /* Cards */
+    .card {
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: 0 0 15px var(--shadow-light);
+      background: #fff;
+      color: var(--color-text-primary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      color: var(--color-text-primary);
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .card h3 {
+      color: var(--color-text-primary);
+    }
+    /* Skill badges */
+    .skill-badge {
+      background-color: #2563eb20;
+      color: var(--color-primary);
+      font-weight: 600;
+      border-radius: 1rem;
+      padding: 0.4rem 1rem;
+      margin: 0.3rem 0.5rem 0.3rem 0;
+      display: inline-block;
+      user-select: none;
+      font-size: 0.9rem;
+      cursor: default;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      border: 1.5px solid transparent;
+    }
+    .skill-badge:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    /* Responsive typography scaling */
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    /* Experience & education timeline */
+    .timeline {
+      position: relative;
+      margin: 1rem 0 2rem 0;
+      padding-left: 2rem;
+      border-left: 3px solid var(--color-primary);
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+      color: var(--color-text-primary);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 0.25rem;
+      width: 20px;
+      height: 20px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      border: 3px solid #e0e7ff;
+    }
+    .timeline-item h5 {
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .timeline-item .period {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+      user-select: none;
+    }
+    /* Contact form */
+    form label {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+    form input,
+    form textarea {
+      border-radius: var(--border-radius);
+      border: 1px solid #d1d5db;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      resize: vertical;
+      background: #fefefe;
+      color: var(--color-text-primary);
+      box-shadow: inset 0 0 4px #e5e7eb;
+    }
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 5px var(--color-primary);
+      background: #fff;
+    }
+    form button {
+      margin-top: 1.25rem;
+      box-shadow: 0 4px 15px var(--shadow-primary);
+    }
+    form button:hover,
+    form button:focus {
+      box-shadow: 0 7px 25px var(--shadow-primary);
+    }
+    /* Footer styling */
+    footer {
+      background: #ffffff;
+      color: var(--color-text-secondary);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      user-select: none;
+      border-top: 1px solid #e5e7eb;
+      position: relative;
+      z-index: 2;
+    }
+    /* WhatsApp icon styling */
+    .material-icons.whatsapp-icon {
+      vertical-align: middle;
+      color: #25d366;
+      font-size: var(--icon-size);
+      user-select: none;
+    }
+    /* Background animated bubbles behind about section */
+    #about {
+      position: relative;
+      overflow: hidden;
+      background: #ffffffcc;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.05);
+      margin: 0 1rem 4rem;
+    }
+    #about::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -25%;
+      width: 150%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 20% 20%, #2563eb55, transparent 25%),
+        radial-gradient(circle at 80% 35%, #3b82f655, transparent 30%),
+        radial-gradient(circle at 45% 75%, #60a5fa55, transparent 30%);
+      animation: bubblePulse 12s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #about::after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      right: -25%;
+      width: 150%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 30% 25%, #93c5fd33, transparent 35%),
+        radial-gradient(circle at 70% 65%, #bfdbfe33, transparent 40%);
+      animation: bubblePulseAlt 15s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes bubblePulse {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-15px) scale(1.1); opacity: 1; }
+    }
+    @keyframes bubblePulseAlt {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.75; }
+      50% { transform: translateY(15px) scale(1.1); opacity: 1; }
+    }
+    /* Professional portrait styling */
+    .about-portrait {
+      max-width: 280px;
+      width: 100%;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px var(--shadow-primary);
+      border: 4px solid var(--color-primary);
+      object-fit: cover;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+    }
+    .about-portrait:hover,
+    .about-portrait:focus {
+      outline: none;
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 12px 30px var(--shadow-primary-dark);
+    }
+    /* About content flex layout */
+    .about-content-row {
+      align-items: center;
+      gap: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      padding: 3rem 2rem;
+      color: var(--color-text-primary);
+    }
+    .about-text {
+      flex: 1 1 380px;
+      max-width: 750px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      user-select: text;
+    }
+    .about-image-container {
+      flex: 0 0 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    /* Contact icons container under portrait image - icons only */
+    .icon-contact-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .icon-contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      font-size: var(--icon-size);
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 3px 10px rgb(37 99 235 / 0.3);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .icon-contact-link:hover,
+    .icon-contact-link:focus {
+      background-color: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 8px 22px rgb(37 99 235 / 0.7);
+      outline: none;
+      text-decoration: none;
+    }
+    /* Responsive stack for mobile */
+    @media (max-width: 768px) {
+      .about-content-row {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+      }
+      .about-text {
+        max-width: 100%;
+        text-align: center;
+      }
+      .about-image-container {
+        margin-bottom: 2rem;
+        flex: none;
+        gap: 1rem;
+      }
+      .icon-contact-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Bootstrap navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light container" aria-label="Main navigation">
+      <a class="navbar-brand" href="#home" aria-label="Homepage MMM. Mufareez portfolio">MMM. Mufareez</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link active" href="#about" aria-current="page">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home" tabindex="-1" role="region" aria-label="Introduction">
+    <div class="container">
+      <h1>Hi, I'm MMM. Mufareez</h1>
+      <p>I am a passionate and professional software developer specializing in modern web technologies, crafting sleek, responsive, and scalable applications.</p>
+      <a href="#projects" class="btn btn-primary-custom" role="button">Explore My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section with image and background animation -->
+  <section id="about" tabindex="-1" role="region" aria-label="About Me">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content-row">
+        <div class="about-image-container">
+          <img 
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa6f4b75-9e93-4eb3-bf23-65a7856d51f2.png" 
+            alt="Professional portrait of MMM. Mufareez, smiling, wearing business casual, clean background and good lighting" 
+            class="about-portrait"
+            tabindex="0"
+          />
+          <div class="icon-contact-links" aria-label="Contact methods icons below portrait image">
+            <a href="mailto:mufareez2000@gmail.com" class="icon-contact-link" aria-label="Send Email to mufareez2000@gmail.com" target="_blank" rel="noopener noreferrer" title="Email">
+              <span class="material-icons" aria-hidden="true">email</span>
+            </a>
+            <a href="https://wa.me/0770035313" class="icon-contact-link" aria-label="Chat on WhatsApp with number 0770035313" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+              <span class="material-icons whatsapp-icon" aria-hidden="true">whatsapp</span>
+            </a>
+            <a href="https://github.com/mufareez" class="icon-contact-link" aria-label="View GitHub profile" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <svg aria-hidden="true" height="24" width="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" xmlns="http://www.w3.org/2000/svg" >
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.383-1.333-1.75-1.333-1.75-1.09-.745.084-.729.084-.729 1.205.085 1.838 1.234 1.838 1.234 1.07 1.835 2.809 1.304 3.495.997.107-.776.418-1.305.76-1.605-2.665-.305-5.466-1.334-5.466-5.932 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.475 5.92.42.36.81 1.096.81 2.21v3.285c0 .315.21.69.825.57C20.565 22.092 24 17.59 24 12.297 24 5.67 18.627.297 12 .297z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>
+            I am an experienced full-stack developer with expertise in front-end and back-end technologies including JavaScript, Bootstrap, PHP, and various programming languages.
+            My goal is to deliver high-quality, performant, and accessible software solutions leveraging modern design principles and best coding practices. I am passionate about creating clean, scalable, and user-friendly web and mobile applications that solve real-world problems.
+          </p>
+          <p>
+            With a strong commitment to continuous learning and teamwork, I ensure that every project I work on maintains excellence in quality, maintainability, and user experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" tabindex="-1" role="region" aria-label="Skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Technologies</h2>
+      <div class="d-flex flex-wrap justify-content-center" aria-label="List of skills">
+        <span class="skill-badge" title="JavaScript">JavaScript (ES6+)</span>
+        <span class="skill-badge" title="ReactJS">ReactJS</span>
+        <span class="skill-badge" title="Bootstrap">Bootstrap 5</span>
+        <span class="skill-badge" title="HTML5">HTML5</span>
+        <span class="skill-badge" title="CSS3">CSS3</span>
+        <span class="skill-badge" title="PHP">PHP</span>
+        <span class="skill-badge" title="Node.js">Node.js</span>
+        <span class="skill-badge" title="Express">Express</span>
+        <span class="skill-badge" title="MySQL">MySQL</span>
+        <span class="skill-badge" title="API Development">API Development</span>
+        <span class="skill-badge" title="Git">Git & GitHub</span>
+        <span class="skill-badge" title="Linux">Linux</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" tabindex="-1" role="region" aria-label="Projects">
+    <div class="container">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="projects-grid">
+        <article class="card" tabindex="0" aria-labelledby="project1-title" role="article">
+          <div class="card-body">
+            <h3 id="project1-title">Portfolio Website</h3>
+            <p>A fully responsive personal portfolio built with Bootstrap, HTML5, CSS3, and JavaScript showcasing my skills, projects, and experience.</p>
+            <a href="https://github.com/mufareez/portfolio" target="_blank" rel="noopener noreferrer" aria-label="View Portfolio Website project on GitHub">View on GitHub</a>
+          </div>
+        </article>
+        <article class="card" tabindex="0" aria-labelledby="project2-title" role="article">
+          <div class="card-body">
+            <h3 id="project2-title">Task Management App</h3>
+            <p>An interactive task manager featuring user authentication, drag-and-drop task cards, and real-time updates built with React and Node.js.</p>
+            <a href="https://github.com/mufareez/task-manager" target="_blank" rel="noopener noreferrer" aria-label="View Task Management App project on GitHub">View on GitHub</a>
+          </div>
+        </article>
+        <article class="card" tabindex="0" aria-labelledby="project3-title" role="article">
+          <div class="card-body">
+            <h3 id="project3-title">E-commerce Website Backend</h3>
+            <p>Developed a robust backend API in PHP with MySQL database to handle product catalog, orders, payments, and user administration.</p>
+            <a href="https://github.com/mufareez/ecommerce-backend" target="_blank" rel="noopener noreferrer" aria-label="View E-commerce Website Backend project on GitHub">View on GitHub</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" tabindex="-1" role="region" aria-label="Work Experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline" aria-label="Timeline of work experience">
+        <div class="timeline-item">
+          <h5>Senior Software Developer</h5>
+          <div class="period">Jan 2022 - Present</div>
+          <p>Leading a team to develop scalable web applications using React, Node.js, and cloud services. Designed and implemented key features for customer-facing platforms.</p>
+        </div>
+        <div class="timeline-item">
+          <h5>Full-stack Developer</h5>
+          <div class="period">Jun 2018 - Dec 2021</div>
+          <p>Worked on various client projects building responsive websites, APIs, and backend services using PHP, Laravel, JavaScript, and Bootstrap.</p>
+        </div>
+        <div class="timeline-item">
+          <h5>Junior Developer</h5>
+          <div class="period">Jan 2016 - May 2018</div>
+          <p>Assisted in frontend development with HTML, CSS, and JavaScript. Participated in debugging and feature improvements across multiple projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" tabindex="-1" role="region" aria-label="Education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline" aria-label="Timeline of education">
+        <div class="timeline-item">
+          <h5>Bachelor of Science in Computer Science</h5>
+          <div class="period">2011 - 2015</div>
+          <p>University of Technology - Graduated with honors. Studied programming, algorithms, data structures, and software engineering principles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" tabindex="-1" role="region" aria-label="Contact Me">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form id="contact-form" novalidate aria-describedby="form-desc" aria-live="polite">
+            <p id="form-desc" class="text-muted" style="margin-bottom:1rem; color: var(--color-text-secondary);">Please fill the form below to send me a message. All messages will be sent directly to my email.</p>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name <span aria-hidden="true" style="color: #ef4444;">*</span></label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required aria-required="true" aria-describedby="nameHelp" autocomplete="name" />
+              <div id="nameHelp" class="form-text" style="color:var(--color-text-secondary);">Your name is required.</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email <span aria-hidden="true" style="color: #ef4444;">*</span></label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required aria-required="true" aria-describedby="emailHelp" autocomplete="email" />
+              <div id="emailHelp" class="form-text" style="color:var(--color-text-secondary);">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject (optional)" aria-describedby="subjectHelp" autocomplete="off" />
+              <div id="subjectHelp" class="form-text" style="color:var(--color-text-secondary);">Brief topic of your message.</div>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message <span aria-hidden="true" style="color: #ef4444;">*</span></label>
+              <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message" required aria-required="true" aria-describedby="messageHelp"></textarea>
+              <div id="messageHelp" class="form-text" style="color:var(--color-text-secondary);">Please write your message here.</div>
+            </div>
+            <button type="submit" class="btn btn-primary-custom" aria-label="Send message">Send Message</button>
+            <div id="form-status" role="alert" aria-live="polite" style="margin-top:1rem; font-weight: 700;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 MMM. Mufareez. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; user-select:none;">
+        <a href="mailto:mufareez2000@gmail.com" style="color: var(--color-primary);" aria-label="Send email to mufareez2000@gmail.com">Email</a> |
+        <a href="https://wa.me/0770035313" target="_blank" rel="noopener noreferrer" style="color:#25d366;" aria-label="Chat on WhatsApp with number 0770035313">WhatsApp</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- EmailJS SDK and integration for email sending -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_EMAILJS_USER_ID");
+    })();
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      status.textContent = '';
+      status.style.color = '';
+
+      if (!form.checkValidity()) {
+        status.textContent = 'Please complete all required fields correctly.';
+        status.style.color = 'red';
+        form.reportValidity();
+        return;
+      }
+
+      const templateParams = {
+        from_name: form.name.value.trim(),
+        reply_to: form.email.value.trim(),
+        subject: form.subject.value.trim() || "(No Subject)",
+        message: form.message.value.trim()
+      };
+
+      status.textContent = 'Sending message...';
+      // Use direct color code if varColor undefined
+      status.style.color = '#2563eb';
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function() {
+          status.textContent = 'Thank you for your message! I will get back to you soon.';
+          status.style.color = 'green';
+          form.reset();
+        }, function(error) {
+          console.error('EmailJS send error:', error);
+          status.textContent = 'Oops! Something went wrong trying to send your message. Please try again later.';
+          status.style.color = 'red';
+        });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = Array.from(navLinks).map(link => {
+        if (!link.hash) return null;
+        const target = document.querySelector(link.hash);
+        return target;
+      }).filter(Boolean);
+
+      function onScroll() {
+        const scrollPos = window.scrollY + 100;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].offsetTop <= scrollPos) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const id = sections[i].id;
+            const activeLink = Array.from(navLinks).find(link => link.hash === '#' + id);
+            if (activeLink) activeLink.classList.add('active');
+            break;
+          }
+        }
+      }
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    });
+  </script>
+</body>
+</html>
+
